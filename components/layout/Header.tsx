@@ -1,11 +1,14 @@
-import DeployButton from "@/components/deploy-button";
-import { EnvVarWarning } from "@/components/env-var-warning";
-import HeaderAuth from "@/components/header-auth";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
+"use client"
+
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     return (
         <header className="flex-col inline-flex h-[96px] w-full items-end justify-start">
             {/* トップバー */}
@@ -55,7 +58,47 @@ const Header = () => {
 
                 {/* 右側 */}
                 <div className="Right flex items-center justify-end w-1/6">
-                    {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
+                    {/* デスクトップ表示 */}
+                    <div className="hidden md:flex gap-2">
+                        <Button asChild size="sm" variant="outline">
+                            <Link href="/sign-in">ログイン</Link>
+                        </Button>
+                        <Button asChild size="sm">
+                            <Link href="/sign-up">はじめる</Link>
+                        </Button>
+                    </div>
+
+                    {/* モバイル表示 - ハンバーガーメニュー */}
+                    <div className="relative md:hidden">
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="relative z-50"
+                        >
+                            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </Button>
+
+                        {/* ドロップダウンメニュー */}
+                        <div
+                            className={cn(
+                                "absolute right-0 top-12 w-64 bg-background border rounded-lg shadow-lg p-4",
+                                "transition-all duration-200 ease-in-out",
+                                isMenuOpen 
+                                    ? "opacity-100 visible translate-y-0" 
+                                    : "opacity-0 invisible -translate-y-2"
+                            )}
+                        >
+                            <div className="flex flex-col gap-2">
+                                <Button asChild size="sm" variant="outline">
+                                    <Link href="/sign-in">ログイン</Link>
+                                </Button>
+                                <Button asChild size="sm">
+                                    <Link href="/sign-up">はじめる</Link>
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
