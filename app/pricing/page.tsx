@@ -1,14 +1,23 @@
 "use client"
 
 export default function Page() {
-  const STRIPE_PRODUCT_ID = process.env.NEXT_PUBLIC_STRIPE_PRODUCT_ID;
+  // TODO: リリース時は本番用のIDに変更する
+  const priceId = process.env.NEXT_PUBLIC_STRIPE_TEST_PRICE_ID;
 
-  if (!STRIPE_PRODUCT_ID) {
+  if (!priceId) {
     throw new Error('プランが見つかりませんでした。');
   }
 
-  const handleButtonClick = () => {
-    console.log('カード情報の入力に進む');
+  const handleButtonClick = async () => {
+    const response = await fetch('/api/stripe/checkout/session', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ priceId }),
+    })
+    const session = await response.json();
+    window.location.href = session.url;
   }
 
   return (
