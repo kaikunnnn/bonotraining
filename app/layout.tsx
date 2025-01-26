@@ -15,6 +15,8 @@ const NavButton = ({ text }: { text: string }) => (
 import { Button } from "@/components/ui/button"
 
 import "./globals.css";
+import MainHeadline from "@/components/layout/headline/MainHeadline";
+import ObjectChallenge from "@/components/exercises/Challenges/ObjectChallenge";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -43,6 +45,50 @@ export default function RootLayout({
           <main className="min-h-screen flex flex-col items-center">
             <div className="flex-1 w-full flex flex-col gap-20 items-center">
               <Header />
+              <MainHeadline 
+                mainTitle={{
+                  first: "みんなで",
+                  second: "デザトレ"
+                }}
+                description="SNS情報ばっかり見て肩こわばってない？そうだ！デザイン筋を鍛える旅に出かけようっ！"
+                buttonText="使い方を見る"
+                
+              />
+              <div className="w-full flex justify-between gap-8 px-8">
+                <ObjectChallenge 
+                  title="SNSアプリをつくろう"
+                  difficulty="やさしい"
+                  description="グラフィックデザインの基礎から学べるトレーニング"
+                  trainingPart={{
+                    visual: "UIビジュアル"
+                  }}
+                  trainingType="チャレンジ"
+                  isFree={false}
+                  buttonText="トレーニングを見る"
+                />
+                <ObjectChallenge 
+                  title="アプリをつくろう"
+                  difficulty="やさしい"
+                  description="グラフィックデザインの基礎から学べるトレーニング"
+                  trainingPart={{
+                    visual: "UIビジュアル"
+                  }}
+                  trainingType="チャレンジ"
+                  isFree={false}
+                  buttonText="トレーニングを見る"
+                />
+                <ObjectChallenge 
+                  title="SNSアプリをつくろう"
+                  difficulty="やさしい"
+                  description="グラフィックデザインの基礎から学べるトレーニング"
+                  trainingPart={{
+                    visual: "UIビジュアル"
+                  }}
+                  trainingType="チャレンジ"
+                  isFree={false}
+                  buttonText="トレーニングを見る"
+                />
+              </div>
               
               <div className="flex flex-col gap-20 max-w-5xl p-5">
                 {children}
