@@ -13,6 +13,7 @@ const NavButton = ({ text }: { text: string }) => (
   </div>
 );
 import { Button } from "@/components/ui/button"
+import { AnimatedHero } from "@/components/ui/animated-hero";
 
 import "./globals.css";
 import MainHeadline from "@/components/layout/headline/MainHeadline";
@@ -89,6 +90,8 @@ export default function RootLayout({
                   buttonText="トレーニングを見る"
                 />
               </div>
+
+              <AnimatedHero />
               
               <div className="flex flex-col gap-20 max-w-5xl p-5">
                 {children}
