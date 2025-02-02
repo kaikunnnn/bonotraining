@@ -1,16 +1,87 @@
-import Hero from "@/components/hero";
-import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
-import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
+import { AnimatedHero } from "@/components/layout/hero/animated-hero";
+import MainHeadline from "@/components/layout/headline/MainHeadline";
+import ScrollTextSection from "@/components/layout/decoration/ScrollTextSection";
+import ObjectChallenge from "@/components/exercises/Challenges/ObjectChallenge";
+import NormalHeadline from "@/components/layout/headline/NormalHeadline";
+import ObjectPractice from "@/components/exercises/Practises/ObjectPractice";
 
-export default async function Index() {
+export default function HomePage() {
   return (
     <>
-      <Hero />
-      <main className="flex-1 flex flex-col gap-6 px-4">
-        <h2 className="font-medium text-xl mb-4">Next steps</h2>
-        {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-      </main>
+      {/* TOPページ専用のHero */}
+      <AnimatedHero />
+
+      {/* メインの見出しと説明 */}
+      <MainHeadline 
+        mainTitle={{ first: "みんなで", second: "デザトレ" }}
+        description="SNS情報ばっかり見て肩こわばってない？そうだ！デザイン筋を鍛える旅に出かけようっ！"
+        buttonText="使い方を見る"
+      />
+
+      {/* チャレンジの一覧 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-8">
+        <ObjectChallenge 
+          title="SNSアプリをつくろう"
+          difficulty="やさしい"
+          description="グラフィックデザインの基礎から学べるトレーニング"
+          trainingPart={{ visual: "UIビジュアル" }}
+          trainingType="チャレンジ"
+          isFree={false}
+          buttonText="トレーニングを見る"
+        />
+        <ObjectChallenge 
+          title="アプリをつくろう"
+          difficulty="やさしい"
+          description="グラフィックデザインの基礎から学べるトレーニング"
+          trainingPart={{ visual: "UIビジュアル" }}
+          trainingType="チャレンジ"
+          isFree={false}
+          buttonText="トレーニングを見る"
+        />
+        <ObjectChallenge 
+          title="SNSアプリをつくろう"
+          difficulty="やさしい"
+          description="グラフィックデザインの基礎から学べるトレーニング"
+          trainingPart={{ visual: "UIビジュアル" }}
+          trainingType="チャレンジ"
+          isFree={false}
+          buttonText="トレーニングを見る"
+        />
+      </div>
+
+      {/* スクロールテキストの装飾 */}
+      <ScrollTextSection />
+
+      {/* スキルトレーニングのセクション */}
+      <div>
+        <NormalHeadline 
+          englishTitle="Nanka Kakkoii Eigo"
+          japaneseTitle="スキル特化トレーニング"
+        />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-8">
+          <ObjectPractice
+            title="SNSアプリをつくろう"
+            description="グラフィックデザインの基礎から学べるトレーニング"
+            isFree={false}
+            category={{ name: "UIビジュアル" }}
+            type="チャレンジ"
+          />
+          <ObjectPractice
+            title="アプリをつくろう"
+            description="グラフィックデザインの基礎から学べるトレーニング"
+            isFree={false}
+            category={{ name: "UIビジュアル" }}
+            type="チャレンジ"
+          />
+          <ObjectPractice
+            title="SNSアプリをつくろう"
+            description="グラフィックデザインの基礎から学べるトレーニング"
+            isFree={false}
+            category={{ name: "UIビジュアル" }}
+            type="チャレンジ"
+          />
+        </div>
+      </div>
     </>
   );
 }
