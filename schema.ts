@@ -59,6 +59,33 @@ export type Database = {
         }
         Relationships: []
       }
+      subscriptions: {
+        Row: {
+          end_timestamp: string
+          id: string
+          start_timestamp: string
+          stripe_invoice_id: string | null
+          stripe_subscription_id: string
+          user_id: string
+        }
+        Insert: {
+          end_timestamp: string
+          id?: string
+          start_timestamp: string
+          stripe_invoice_id?: string | null
+          stripe_subscription_id: string
+          user_id: string
+        }
+        Update: {
+          end_timestamp?: string
+          id?: string
+          start_timestamp?: string
+          stripe_invoice_id?: string | null
+          stripe_subscription_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
