@@ -15,7 +15,7 @@ import {
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import { MoonIcon, PaperPlaneIcon, SunIcon } from "@radix-ui/react-icons"
 
-function Footer() {
+function Footerdemo() {
   const [isDarkMode, setIsDarkMode] = React.useState(true)
   const [isChatOpen, setIsChatOpen] = React.useState(false)
 
@@ -73,7 +73,15 @@ function Footer() {
               </a>
             </nav>
           </div>
-         
+          <div>
+            <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
+            <address className="space-y-2 text-sm not-italic">
+              <p>123 Innovation Street</p>
+              <p>Tech City, TC 12345</p>
+              <p>Phone: (123) 456-7890</p>
+              <p>Email: hello@example.com</p>
+            </address>
+          </div>
           <div className="relative">
             <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
             <div className="mb-6 flex space-x-4">
@@ -165,4 +173,4 @@ function Footer() {
   )
 }
 
-export { Footer }
+export { Footerdemo }
