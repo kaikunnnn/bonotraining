@@ -1,6 +1,6 @@
 import {
     createCheckoutSession,
-    // createOrUpdateStripeCustomer,
+    createStripeCustomer,
 } from '@/utils/stripe/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
@@ -17,12 +17,12 @@ export async function POST(request: NextRequest) {
         return redirect('/sign-in');
     }
 
-    // const stripeCustomerId = await createOrUpdateStripeCustomer(user);
+    const stripeCustomerId = await createStripeCustomer(user);
 
     const body = await request.json();
     const stripeCheckoutSession = await createCheckoutSession(
         body.priceId,
-        // stripeCustomerId
+        stripeCustomerId
     );
     if (!stripeCheckoutSession.url) {
         throw new Error('Stripe Checkout セッションを作成できませんでした。');

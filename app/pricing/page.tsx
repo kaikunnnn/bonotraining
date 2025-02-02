@@ -25,8 +25,6 @@ export default function Page() {
         throw new Error('エラーが発生しました。');
     }
 
-    // TODO: APIインターフェースの型定義を追加する
-    // Stripe Checkout にリダイレクト
     const session = await response.json();
     router.push(session.url);
   }
