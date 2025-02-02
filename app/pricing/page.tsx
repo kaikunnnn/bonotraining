@@ -1,6 +1,10 @@
 "use client"
 
+import { useRouter } from 'next/navigation';
+
 export default function Page() {
+  const router = useRouter();
+
   // TODO: リリース時は本番用のIDに変更する
   const priceId = process.env.NEXT_PUBLIC_STRIPE_TEST_PRICE_ID;
 
@@ -16,8 +20,13 @@ export default function Page() {
         },
         body: JSON.stringify({ priceId }),
     })
+
+    if (!response.ok) {
+        throw new Error('エラーが発生しました。');
+    }
+
     const session = await response.json();
-    window.location.href = session.url;
+    router.push(session.url);
   }
 
   return (
