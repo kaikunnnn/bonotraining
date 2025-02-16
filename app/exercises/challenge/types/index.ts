@@ -1,3 +1,11 @@
+// 共通の型を定義
+export type StepItem = {
+    step: number;
+    title: string;
+    subtitle: string;
+    description: string;
+};
+
 export type Exercise = {
     id: string;
     title: string;
@@ -5,11 +13,11 @@ export type Exercise = {
     description: string;
     category: string;
     type: string;
-    imageUrl: string;
+    thumbnail: string;
     stages: Stage[];
-    benefits: Benefit[];
-    howTo: HowTo[];
-    knowledge: Knowledge[];
+    benefits: StepItem[];    // StepItemを使用
+    howTo: StepItem[];      // StepItemを使用
+    knowledge: StepItem[];   // StepItemを使用
 };
 
 export type Stage = {
@@ -17,23 +25,7 @@ export type Stage = {
     title: string;
 };
 
-export type Benefit = {
-    step: number;
-    title: string;
-    subtitle: string;
-    description: string;
-};
-
-export type HowTo = {
-    step: number;
-    title: string;
-    subtitle: string;
-    description: string;
-};
-
-export type Knowledge = {
-    step: number;
-    title: string;
-    subtitle: string;
-    description: string;
-};
+// 以下の個別の型定義は不要になるため削除
+// export type Benefit
+// export type HowTo
+// export type Knowledge
