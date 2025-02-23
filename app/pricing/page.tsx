@@ -6,7 +6,8 @@ export default function Page() {
   const router = useRouter();
 
   // TODO: リリース時は本番用のIDに変更する
-  const priceId = process.env.NEXT_PUBLIC_STRIPE_TEST_PRICE_ID;
+  // const priceId = process.env.NEXT_PUBLIC_STRIPE_TEST_PRICE_ID;
+  const priceId = 'price_1Qit9MKUVUnt8GtyoXFzn2Ui';
 
   if (!priceId) {
     throw new Error('プランが見つかりませんでした。');
