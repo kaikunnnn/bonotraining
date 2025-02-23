@@ -1,12 +1,13 @@
 import { exercisesData } from '../data';
 import Link from 'next/link';
 
-export default function ExerciseDetailPage({
+export default async function ExerciseDetailPage({
   params,
 }: {
-  params: { "exercise-id": string };
+  params: Promise<{ "exercise-id": string }>;
 }) {
-  const exercise = exercisesData[params["exercise-id"]];
+  const exerciseId = await params;
+  const exercise = exercisesData[exerciseId["exercise-id"]];
 
   // 存在しないエクササイズIDの場合のエラーハンドリング
   if (!exercise) {
@@ -163,7 +164,7 @@ export default function ExerciseDetailPage({
                 </div>
                 <div className="w-full flex flex-col items-center gap-2.5 mt-auto">
                   <Link
-                    href={`/exercises/challenge/${params["exercise-id"]}/${exercise.stages[0].id}`}
+                    href={`/exercises/challenge/${exercise}/${exercise.stages[0].id}`}
                     className="w-full max-w-sm p-6 bg-[#0d211d] rounded-full border border-[#0d0f18]/90 justify-center items-center gap-2.5 inline-flex"
                   >
                     <div className="text-center text-white text-sm font-bold font-['Rounded Mplus 1c Bold'] leading-[14px] tracking-wide">はじめる</div>
@@ -190,7 +191,7 @@ export default function ExerciseDetailPage({
                 {exercise.stages.map((stage, index) => (
                   <div key={index} className="w-full">
                     <Link
-                      href={`/exercises/challenge/${params["exercise-id"]}/${stage.id}`}
+                      href={`/exercises/challenge/${exercise}/${stage.id}`}
                       className="w-full block py-4 hover:bg-slate-50 transition-colors flex items-center gap-8 border-b border-slate-200"
                     >
                       <div className="flex-shrink-0 px-4 py-2 flex flex-col items-center">

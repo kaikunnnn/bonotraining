@@ -1,7 +1,8 @@
-export default function ExerciseDetailPage({
+export default async function ExerciseDetailPage({
   params,
 }: {
-  params: { "exercise-id": string };
+  params: Promise<{ "exercise-id": string }>;
 }) {
-  return <h1>お題詳細ページ - ID: {params["exercise-id"]}</h1>;
+  const { "exercise-id": exerciseId } = await params;
+  return <h1>お題詳細ページ - ID: {exerciseId}</h1>;
 }
