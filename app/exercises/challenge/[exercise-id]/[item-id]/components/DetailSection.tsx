@@ -5,7 +5,10 @@ interface DetailSectionProps {
 }
 
 type Props = {
-  params: Promise<{ itemId: string }>;
+  params: Promise<{
+    "exercise-id": string;
+    "item-id": string;
+  }>;
   searchParams: Promise<{ genre: string; name: string }>;
 };
 
