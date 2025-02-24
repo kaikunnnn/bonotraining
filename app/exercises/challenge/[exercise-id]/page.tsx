@@ -6,8 +6,9 @@ export default async function ExerciseDetailPage({
 }: {
   params: Promise<{ "exercise-id": string }>;
 }) {
-  const exerciseId = await params;
-  const exercise = exercisesData[exerciseId["exercise-id"]];
+  const resolvedParams = await params;
+  const exerciseId = resolvedParams["exercise-id"];
+  const exercise = exercisesData[exerciseId];
 
   // 存在しないエクササイズIDの場合のエラーハンドリング
   if (!exercise) {
@@ -206,7 +207,7 @@ export default async function ExerciseDetailPage({
                 </div>
                 <div className="w-full flex flex-col items-center gap-2.5 mt-auto">
                   <Link
-                    href={`/exercises/challenge/${exerciseId["exercise-id"]}/${exercise.stages[0].id}`}
+                    href={`/exercises/challenge/${exerciseId}/${exercise.stages[0].id}`}
                     className="w-full max-w-sm p-6 bg-[#0d211d] rounded-full border border-[#0d0f18]/90 justify-center items-center gap-2.5 inline-flex"
                   >
                     <div className="text-center text-white text-sm font-bold font-['Rounded Mplus 1c Bold'] leading-[14px] tracking-wide">
@@ -241,7 +242,7 @@ export default async function ExerciseDetailPage({
                 {exercise.stages.map((stage, index) => (
                   <div key={index} className="w-full">
                     <Link
-                      href={`/exercises/challenge/${params["exercise-id"]}/${stage.id}`}
+                      href={`/exercises/challenge/${exerciseId}/${stage.id}`}
                       className="w-full py-4 hover:bg-slate-50 transition-colors flex items-center gap-8 border-b border-slate-200"
                     >
                       <div className="flex-shrink-0 px-4 py-2 flex flex-col items-center">
