@@ -5,6 +5,7 @@ import ObjectChallenge from "@/components/exercises/Challenges/ObjectChallenge";
 import NormalHeadline from "@/components/layout/headline/NormalHeadline";
 import ObjectPractice from "@/components/exercises/Practises/ObjectPractice";
 import { exercisesData } from "./exercises/challenge/data";
+import { OdaiChallenge } from "@/components/exercises/Challenges/Odai-Challenge";
 
 export default function HomePage() {
   return (
@@ -22,29 +23,71 @@ export default function HomePage() {
         />
 
         {/* チャレンジの一覧 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-8">
-          {Object.values(exercisesData).map((exercise) => (
-            <ObjectChallenge
-              key={exercise.id}
-              exerciseId={exercise.id}
-              title={exercise.title}
-              difficulty={exercise.difficulty}
-              description={exercise.description}
-              trainingPart={{ visual: exercise.category }}
-              trainingType={exercise.type}
-              isFree={false}
-              buttonText="トレーニングを見る"
-            />
-          ))}
-        </div>
 
+        <div className="flex flex-wrap items-start justify-center gap-32 relative w-full">
+          {/* OdaiChallengeコンポーネントをexercisesDataを使用して表示 */}
+          {Object.values(exercisesData)
+            .filter(exercise => exercise.type === "チャレンジ") // 必要に応じてフィルタリング
+            .map((exercise) => (
+              <OdaiChallenge
+                key={exercise.id}
+                exerciseId={exercise.id}
+                title={exercise.title}
+                difficulty={exercise.difficulty}
+                description={exercise.description}
+                trainingPart={{ visual: exercise.category }}
+                trainingType={exercise.type}
+                thumbnail={exercise.thumbnail}
+                bgblur={exercise.bgblur}
+                isFree={false}
+                buttonText="トレーニングを見る"
+              />
+            ))}
+        </div>
+      </div>
+      {/* WaveBorder */}
+      <div className="w-full">
+        <img
+          src="/wave-border.svg"
+          alt="Wave Border"
+          className="w-full h-auto"
+        />
       </div>
 
+      <div className="Challenge container mx-auto py-20 flex flex-col gap-10">
+        {/* メインの見出しと説明 */}
+        <MainHeadline
+          mainTitle={{ first: "“スキル”の筋トレ!", second: "" }}
+          description="伸ばしたいスキルに合わせたトレーニング"
+          showButton={false}
+          buttonText="aaa"
+        />
 
-      {/* スクロールテキストの装飾 */}
-      <ScrollTextSection />
+        {/* チャレンジの一覧 */}
 
-      {/* スキルトレーニングのセクション */}
+        <div className="flex flex-wrap items-start justify-center gap-32 relative w-full">
+          {/* OdaiChallengeコンポーネントをexercisesDataを使用して表示 */}
+          {Object.values(exercisesData)
+            .filter(exercise => exercise.type === "チャレンジ") // 必要に応じてフィルタリング
+            .map((exercise) => (
+              <OdaiChallenge
+                key={exercise.id}
+                exerciseId={exercise.id}
+                title={exercise.title}
+                difficulty={exercise.difficulty}
+                description={exercise.description}
+                trainingPart={{ visual: exercise.category }}
+                trainingType={exercise.type}
+                thumbnail={exercise.thumbnail}
+                bgblur={exercise.bgblur}
+                isFree={false}
+                buttonText="トレーニングを見る"
+              />
+            ))}
+        </div>
+      </div>
+
+      {/* スキルトレーニングのセクション
       <div>
         <NormalHeadline
           englishTitle="Nanka Kakkoii Eigo"
@@ -73,7 +116,7 @@ export default function HomePage() {
             type="チャレンジ"
           />
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

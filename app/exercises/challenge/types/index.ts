@@ -14,6 +14,7 @@ export type Exercise = {
     category: string;
     type: string;
     thumbnail: string;
+    bgblur: string;
     stages: Stage[];
     benefits: StepItem[];    // StepItemを使用
     howTo: StepItem[];      // StepItemを使用

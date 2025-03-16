@@ -9,7 +9,8 @@ export const exercisesData: { [key: string]: Exercise } = {
     category: "UIビジュアル",
     type: "チャレンジ",
     thumbnail:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyIEyfClNU0SVPqlWPYBvqUG3JjBr-Orm3dw&s",
+      "/exercise/challenge/todo/design-odai.png",
+    bgblur: "/exercise/challenge/todo/amsterdam.png",
     stages: [
       { id: 1, title: "説明" },
       { id: 2, title: "説明" },
@@ -69,7 +70,9 @@ export const exercisesData: { [key: string]: Exercise } = {
     description: "グラフィックデザインの基礎から学べるトレーニング",
     category: "UIビジュアル",
     type: "チャレンジ",
-    thumbnail: "https://via.placeholder.com/398x245",
+    thumbnail:
+      "/exercise/challenge/todo/design-odai.png",
+    bgblur: "/exercise/challenge/todo/amsterdam.png",
     stages: [
       { id: 1, title: "説明" },
       { id: 2, title: "説明" },
