@@ -10,10 +10,10 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <header className="flex-col inline-flex h-[96px] w-full items-end justify-start">
+        <header className="flex-col inline-flex h-[96px] w-full items-end justify-start fixed top-0 z-50 ">
             {/* トップバー */}
             <div className="flex flex-col items-end justify-start h-6 px-6 self-stretch gap-2.5">
-                <Link 
+                <Link
                     href="https://bo-no.design"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -84,8 +84,8 @@ const Header = () => {
                             className={cn(
                                 "absolute right-0 top-12 w-64 bg-background border rounded-lg shadow-lg p-4",
                                 "transition-all duration-200 ease-in-out",
-                                isMenuOpen 
-                                    ? "opacity-100 visible translate-y-0" 
+                                isMenuOpen
+                                    ? "opacity-100 visible translate-y-0"
                                     : "opacity-0 invisible -translate-y-2"
                             )}
                         >

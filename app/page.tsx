@@ -12,29 +12,34 @@ export default function HomePage() {
       {/* TOPページ専用のHero */}
       <AnimatedHero />
 
-      {/* メインの見出しと説明 */}
-      <MainHeadline
-        mainTitle={{ first: "みんなで", second: "デザトレ" }}
-        description="SNS情報ばっかり見て肩こわばってない？そうだ！デザイン筋を鍛える旅に出かけようっ！"
-        buttonText="使い方を見る"
-      />
+      <div className="Challenge container mx-auto py-20 flex flex-col gap-10">
+        {/* メインの見出しと説明 */}
+        <MainHeadline
+          mainTitle={{ first: "デザインチャレンジ", second: "" }}
+          description="デザインスキルのテーマに沿った「デザインお題」にチャレンジするトレーニング!!"
+          showButton={false}
+          buttonText="aaa"
+        />
 
-      {/* チャレンジの一覧 */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-8">
-        {Object.values(exercisesData).map((exercise) => (
-          <ObjectChallenge
-            key={exercise.id}
-            exerciseId={exercise.id}
-            title={exercise.title}
-            difficulty={exercise.difficulty}
-            description={exercise.description}
-            trainingPart={{ visual: exercise.category }}
-            trainingType={exercise.type}
-            isFree={false}
-            buttonText="トレーニングを見る"
-          />
-        ))}
+        {/* チャレンジの一覧 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-8">
+          {Object.values(exercisesData).map((exercise) => (
+            <ObjectChallenge
+              key={exercise.id}
+              exerciseId={exercise.id}
+              title={exercise.title}
+              difficulty={exercise.difficulty}
+              description={exercise.description}
+              trainingPart={{ visual: exercise.category }}
+              trainingType={exercise.type}
+              isFree={false}
+              buttonText="トレーニングを見る"
+            />
+          ))}
+        </div>
+
       </div>
+
 
       {/* スクロールテキストの装飾 */}
       <ScrollTextSection />
